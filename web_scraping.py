@@ -8,12 +8,12 @@ with open('HTML_FILE_PATH') as html_file:
 print(soup) # no indentation
 print(soup.prettify()) #with indentation
 
-
+#-------------------------------------------------------------------------------------------------------------------------------
 match1 = soup.title  #print title of html with title tag
 match2 = soup.title.text #print only title 
 print(match1)
 print(match2)
-
+#-------------------------------------------------------------------------------------------------------------------------------
 match3 = soup.div #gives first div tag
 
 article = soup.find('div', class_='class_name') #to target specific class
@@ -25,19 +25,19 @@ print(headline)
 summary = article.p.text  # print text of the para of variable article
 print(summary)
 
-
+#-------------------------------------------------------------------------------------------------------------------------------
 
 #print all para from all div tags
 for all_article in soup.find_all('div', class_='article'):
-	headline = article.h2.a.text #print text from anchor tag of h2 of variable article
+	headline = all_article.h2.a.text #print text from anchor tag of h2 of variable article
 	print(headline)
 
-	summary = article.p.text  # print text of the para of variable article
+	summary = all_article.p.text  # print text of the para of variable article
 	print(summary)
 
 	print() #new line
 
-
+#-------------------------------------------------------------------------------------------------------------------------------
 
 # print source code of the htlm file from url with indentation
 source = requests.get('url_of_the_site').text
@@ -74,12 +74,12 @@ print(vid_id)
 yt_link= f'https://www.youtube.com/watch?v={vid_id}' #for python 3.6 & above else use format()
 print(yt_link) #print youtube link
 
-
+#-------------------------------------------------------------------------------------------------------------------------------
 #to print all headlines under the div tag
 for article in soup.find_all('div')
 	headline = article.h2.a.text
 
-"""note:- if in the previous cmd any post will have no header then it will throw an error
+"""note:- if in the previous cmd, any post will have no header then it will throw an error
 to cover that up we will use an alternative to the upper cmd in the next line-->"""
 
 
@@ -90,7 +90,7 @@ for article in soup.find_all('div'):
 		#raise e (to print the error)
 		#pass (to continue)
 		yt_link = None #print none in place of yt_link
-
+#-------------------------------------------------------------------------------------------------------------------------------
 #now to save the content to csv file
 
 csv_file = open('NAME_OF_THE_FILE.csv','w')# opening pointer, w for write mode
